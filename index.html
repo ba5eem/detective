@@ -1,0 +1,126 @@
+<!-- Load TensorFlow.js. This is required to use coco-ssd model. -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+<!-- Load the coco-ssd model. -->
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script>
+
+<style type="text/css">
+  body{
+    margin: 0;
+    border: 5px dashed #ccc;
+
+  }
+</style>
+<form method="post" action="http://example.com/">
+  <input type="file" style="display: none;">
+  <div id="holder" style='width:98%; height:80%; margin:0;'>
+    <div id="wrapper">
+      <img id="image" src="img.png"></img>
+      <h3 id="time"></h3>
+    </div>
+  </div>
+
+  
+  
+  
+</form>
+
+
+<style type="text/css">
+  #holder.hover {
+    border-top: 20px dashed green !important;
+    border-bottom: 20px dashed green !important;
+    border-left: 20px dashed green !important;
+    border-right: 20px dashed green !important;
+  }
+</style>
+
+
+<script type="text/javascript">
+  
+  function readfiles(files) {
+  for (var i = 0; i < files.length; i++) {
+    // document.getElementById('fileDragName').value = files[i].name
+    // document.getElementById('fileDragSize').value = files[i].size
+    // document.getElementById('fileDragType').value = files[i].type
+    reader = new FileReader();
+    reader.onload = function(event) {
+      //document.getElementById('fileDragData').value = event.target.result;
+      document.getElementById('image').src = event.target.result;
+      fireML();
+    }
+    reader.readAsDataURL(files[i]);
+  }
+}
+var holder = document.getElementById('holder');
+holder.ondragover = function () { this.className = 'hover'; return false; };
+holder.ondragend = function () { this.className = ''; return false; };
+holder.ondrop = function (e) {
+  this.className = '';
+  e.preventDefault();
+  readfiles(e.dataTransfer.files);
+}
+</script>
+
+<script>
+  // Notice there is no 'import' statement. 'cocoSsd' and 'tf' is
+  // available on the index-page because of the script tag above.
+  function fireML(){
+    let prevBoxes = document.getElementsByClassName('box');
+    console.log(prevBoxes)
+    if(prevBoxes.length !== 0){
+      for (var i = 0; i < prevBoxes.length; i++){
+        prevBoxes[i].style.display = "none";
+      }
+    }
+    const img = document.getElementById('image');
+    const start = Date.now();
+
+    console.log('starting timer...');
+  // expected output: starting timer...
+    // Load the model.
+    cocoSsd.load().then(model => {
+      // detect objects in the image.
+      model.detect(img).then(predictions => {
+        const millis = Date.now() - start;
+        console.log('Predictions: ', predictions);
+        let div = document.getElementById('wrapper');
+        predictions.map((e,i) => {
+          
+          let box = document.createElement('div');
+
+          box.className = "box";
+          box.style.left = e.bbox[0]
+          box.style.top = e.bbox[1]
+          box.style.width = e.bbox[2]
+          box.style.height = e.bbox[3]
+          box.id = i.toString();
+          box.innerHTML = e.class + "-----" + e.score.toFixed(3)
+          console.log(e.class)
+          div.appendChild(box);
+        })
+        console.log(`seconds elapsed = ${Math.floor(millis / 1000)}`)
+        document.getElementById('time').innerHTML = `seconds elapsed = ${Math.floor(millis / 1000)} ---- model: tensorflow-models/coco-ssd`; 
+      });
+    });
+  }
+  
+</script>
+
+
+<style type="text/css">
+  .box {
+    border: 2px solid red;
+    color: red;
+    font-size: 20px;
+    font-weight: 900;
+    position: fixed;
+
+    z-index: 1000;
+  }
+  #time {
+    color: black;
+  }
+
+
+
+</style>
