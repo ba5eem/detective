@@ -1,126 +1,128 @@
-<!-- Load TensorFlow.js. This is required to use coco-ssd model. -->
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
-<!-- Load the coco-ssd model. -->
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>UCFR</title>
 
-<style type="text/css">
-  body{
-    margin: 0;
-    border: 5px dashed #ccc;
+  <link rel="stylesheet" type="text/css" href="./index.css">
+  <script type="text/javascript" src="./index.js"></script>
 
-  }
-</style>
-<form method="post" action="http://example.com/">
-  <input type="file" style="display: none;">
-  <div id="holder" style='width:98%; height:80%; margin:0;'>
-    <div id="wrapper">
-      <img id="image" src="img.png"></img>
-      <h3 id="time"></h3>
-    </div>
+</head>
+<body>
+
+
+<div class="wrapper">
+  <header class="header">Welcome to [APP_name]. Please upload a photo of a suspected lorem or ipsum and our proprietary facial recognition algorithms will determine whether the suspect belongs to one of the groups.</header>
+  <article class="main">
+    <form method="post" action="http://example.com/">
+      <input type="file" style="display: none;">
+      <div id="holder" style='width:98%; height:80%; margin:0;'>
+        <div id="wrapper">
+          <img id="image" src="image.png"></img>
+          <h3 id="time"></h3>
+        </div>
+      </div> 
+    </form> 
+  </article>
+
+  <footer class="footer">How does it work?</footer>
+</div>
+
+<section></section>
+
+<div class="flex-wrap-container">
+
+  <div class="flex-container-a">
+    <ul>
+      <li class="flex-item" id="a"></li>
+      <li class="flex-item-sub-headings">
+        Processing Request
+        </br>nefarious looking commands runnings
+      </li>
+    </ul> 
   </div>
 
+  <div class="flex-container-a">
+    <ul>
+      <li class="flex-item" id="b"></li>
+      <li class="flex-item-sub-headings">
+        Processing Request
+        </br>...connecting to Facebook facial recognition API
+      </li>
+    </ul> 
+  </div>
+
+  <div class="flex-container-a">
+    <ul>
+      <li class="flex-item" id="c"></li>
+      <li class="flex-item-sub-headings">
+        Processing Request
+        </br>...connecting to Amazon Ring Doorbell facial recognition API
+      </li>
+    </ul> 
+  </div>
+
+  <div class="flex-container-a">
+    <ul>
+      <li class="flex-item" id="d"></li>
+      <li class="flex-item-sub-headings">
+        Processing Request
+        </br>...connecting to Google facial recognition API
+      </li>
+    </ul> 
+  </div>
+
+  <div class="flex-container-a">
+    <ul> 
+      <li class="flex-item" id="e"></li>
+      <li class="flex-item-sub-headings">
+        Processing Request
+        </br>...connection to Palantir facial recognition API rejected, must be member of law enforcement for access
+      </li>
+    </ul> 
+  </div>
+
+  <div class="flex-container-a">
+    <ul>
+      <li class="flex-item" id="f"></li>
+      <li class="flex-item-sub-headings">
+        Processing Request
+        </br><span id="red">Warning: Augue eget arcu dictum varius duis at consectetur lorem. At erat pellentesque adipiscing commodo elit at imperdiet dui accumsan. Dignissim convallis aenean et tortor. Egestas dui id ornare arcu odio ut sem nulla pharetra. Diam vel quam elementum pulvinar etiam non.</span>
+      </li>
+    </ul> 
+  </div>
   
+</div>
+
+
+<section></section>
+
+
+
+<div class="wrapper">
+  <header class="header"><h1>Results</h1></header>
+  <article class="main">
+    <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc id cursus metus aliquam eleifend mi in. Amet venenatis urna cursus eget nunc scelerisque viverra mauris in. Amet luctus venenatis lectus magna fringilla urna porttitor rhoncus. Volutpat sed cras ornare arcu dui vivamus arcu felis. Leo vel fringilla est ullamcorper eget nulla. Ullamcorper velit sed ullamcorper morbi tincidunt ornare.</h3>  
+  </article>
   
+
+</div>
+
+<section></section>
+
+<div class="wrapper">
+  <header class="header"><h1>How does it work?</h1></header>
+  <article class="main">
+    <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</h3> 
+  </article>
+  <article class="main">
+    <h3>In addition, we have partnered with the largest known facial recognition datasets, including those at Facebook, Amazon, Google, and others. We follow all corporate policies and we thank those organizations for making policies that take into account the lived experience of their executives and the struggles of living in the suburbs.</h3>
+  </article>
   
-</form>
+
+</div>
+
+<section></section>
 
 
-<style type="text/css">
-  #holder.hover {
-    border-top: 20px dashed green !important;
-    border-bottom: 20px dashed green !important;
-    border-left: 20px dashed green !important;
-    border-right: 20px dashed green !important;
-  }
-</style>
-
-
-<script type="text/javascript">
-  
-  function readfiles(files) {
-  for (var i = 0; i < files.length; i++) {
-    // document.getElementById('fileDragName').value = files[i].name
-    // document.getElementById('fileDragSize').value = files[i].size
-    // document.getElementById('fileDragType').value = files[i].type
-    reader = new FileReader();
-    reader.onload = function(event) {
-      //document.getElementById('fileDragData').value = event.target.result;
-      document.getElementById('image').src = event.target.result;
-      fireML();
-    }
-    reader.readAsDataURL(files[i]);
-  }
-}
-var holder = document.getElementById('holder');
-holder.ondragover = function () { this.className = 'hover'; return false; };
-holder.ondragend = function () { this.className = ''; return false; };
-holder.ondrop = function (e) {
-  this.className = '';
-  e.preventDefault();
-  readfiles(e.dataTransfer.files);
-}
-</script>
-
-<script>
-  // Notice there is no 'import' statement. 'cocoSsd' and 'tf' is
-  // available on the index-page because of the script tag above.
-  function fireML(){
-    let prevBoxes = document.getElementsByClassName('box');
-    console.log(prevBoxes)
-    if(prevBoxes.length !== 0){
-      for (var i = 0; i < prevBoxes.length; i++){
-        prevBoxes[i].style.display = "none";
-      }
-    }
-    const img = document.getElementById('image');
-    const start = Date.now();
-
-    console.log('starting timer...');
-  // expected output: starting timer...
-    // Load the model.
-    cocoSsd.load().then(model => {
-      // detect objects in the image.
-      model.detect(img).then(predictions => {
-        const millis = Date.now() - start;
-        console.log('Predictions: ', predictions);
-        let div = document.getElementById('wrapper');
-        predictions.map((e,i) => {
-          
-          let box = document.createElement('div');
-
-          box.className = "box";
-          box.style.left = e.bbox[0]
-          box.style.top = e.bbox[1]
-          box.style.width = e.bbox[2]
-          box.style.height = e.bbox[3]
-          box.id = i.toString();
-          box.innerHTML = e.class + "-----" + e.score.toFixed(3)
-          console.log(e.class)
-          div.appendChild(box);
-        })
-        console.log(`seconds elapsed = ${Math.floor(millis / 1000)}`)
-        document.getElementById('time').innerHTML = `seconds elapsed = ${Math.floor(millis / 1000)} ---- model: tensorflow-models/coco-ssd`; 
-      });
-    });
-  }
-  
-</script>
-
-
-<style type="text/css">
-  .box {
-    border: 2px solid red;
-    color: red;
-    font-size: 20px;
-    font-weight: 900;
-    position: fixed;
-
-    z-index: 1000;
-  }
-  #time {
-    color: black;
-  }
-
-
-
-</style>
+</body>
+</html>

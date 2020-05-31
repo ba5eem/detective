@@ -1,0 +1,179 @@
+.wrapper {
+  display: flex;  
+  flex-flow: row wrap;
+  font-weight: bold;
+  text-align: center;
+}
+
+.wrapper > * {
+  padding: 10px;
+  flex: 1 100%;
+}
+
+.header {
+  background: lightgrey;
+}
+
+.footer {
+  background: lightgrey;
+}
+
+.main {
+  text-align: left;
+
+}
+
+.aside-1 {
+  background: gold;
+}
+
+.aside-2 {
+  background: hotpink;
+}
+
+@media all and (min-width: 600px) {
+  .aside { flex: 1 0 0; }
+}
+
+@media all and (min-width: 800px) {
+  .main    { flex: 3 0px; }
+  .aside-1 { order: 1; } 
+  .main    { order: 2; }
+  .aside-2 { order: 3; }
+  .footer  { order: 4; }
+}
+
+body {
+  padding: 2em; 
+}
+
+section{
+  margin-bottom: 2em;
+}
+
+.main{
+  display: flex;
+  justify-content: center;
+}
+
+
+.flex-container {
+  /* We first create a flex layout context */
+  display: flex;
+  
+  /* Then we define the flow direction 
+     and if we allow the items to wrap 
+   * Remember this is the same as:
+   * flex-direction: row;
+   * flex-wrap: wrap;
+   */
+  flex-flow: row wrap;
+  
+  /* Then we define how is distributed the remaining space */
+  justify-content: space-around;
+  
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+ul{
+  list-style: none;
+}
+
+.flex-item {
+  border: 2px solid blue;
+  border-radius: 15px;
+  padding: 5px;
+  height: 40px;
+  margin-top: 10px;
+  color: black;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+  line-height: 2em;
+}
+
+.flex-item-sub-headings {
+  padding: 5px;
+  width: 350px;
+  height: 40px;
+  margin-top: 10px;
+  color: black;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+}
+
+.flex-container-a {
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  align-items: center;
+}
+
+
+.flex-wrap-container{
+  display: flex;
+  justify-content: center;
+  flex-flow: wrap;
+  margin-bottom: 5em;
+}
+
+#red{
+  color: red;
+}
+
+
+#b{
+  background-color: white;
+  border-left: 70px solid blue;
+}
+
+#c{
+  background-color: white;
+  border-left: 150px solid blue;
+}
+
+#d{
+  background-color: white;
+  border-left: 210px solid blue;
+}
+
+#e{
+  background-color: white;
+  border-left: 290px solid blue;
+}
+
+
+#f{
+  background-color: blue;
+
+}
+
+.main.hover {
+    border-top: 20px dashed green !important;
+    border-bottom: 20px dashed green !important;
+    border-left: 20px dashed green !important;
+    border-right: 20px dashed green !important;
+  }
+
+
+#image{
+  max-width: 240px;
+  border: 1px solid black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
